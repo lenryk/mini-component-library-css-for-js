@@ -8,7 +8,17 @@ import VisuallyHidden from "../VisuallyHidden";
 const ProgressBar = ({ value, size }) => {
   return (
     <Wrapper as={size === "large" ? WrapperLarge : Wrapper}>
-      <Bar value={value} as={value > 99 ? BarFull : Bar} size={size} />
+      <Bar
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        value={value}
+        as={value > 99 ? BarFull : Bar}
+        size={size}
+      >
+        <VisuallyHidden>{value}%</VisuallyHidden>
+      </Bar>
     </Wrapper>
   );
 };
